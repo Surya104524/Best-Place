@@ -1,0 +1,23 @@
+<div class="min-h-screen flex flex-col bg-[#070b14] text-slate-100 font-sans antialiased selection:bg-purple-600 selection:text-white">
+  <!-- Desktop & Tablet Header -->
+  <app-header (openSearch)="isSearchOpen.set(true)"></app-header>
+
+  <!-- Main View Area -->
+  <main class="flex-grow">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Global Footer -->
+  <app-footer></app-footer>
+
+  <!-- Mobile Bottom Navigation Bar -->
+  <app-mobile-nav></app-mobile-nav>
+
+  <!-- Global Search Overlay Modal -->
+  @if (isSearchOpen()) {
+    <app-search-modal (close)="isSearchOpen.set(false)"></app-search-modal>
+  }
+
+  <!-- Floating Toast Notifications -->
+  <app-toast-container></app-toast-container>
+</div>
